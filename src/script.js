@@ -45,8 +45,6 @@ function showMovies(movies) {
       localStorage.setItem("movie", JSON.stringify(movie))
 
       var url = "description.html";
-        
-      // Open the new window with specified URL
       window.open(url);
     })
   });
