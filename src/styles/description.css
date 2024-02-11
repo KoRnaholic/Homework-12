@@ -75,3 +75,65 @@ ul li {
 ul li p span {
   font-weight: 600;
 }
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  background-color: orange;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+
+.button:hover {
+  background-color: #ff9900;
+}
+
+
+.button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.star-rating {
+  display: inline-block;
+  font-size: 0;
+}
+
+.star-rating input {
+  display: none;
+}
+
+.star-rating label {
+  float: right;
+  padding: 0 1px;
+  cursor: pointer;
+}
+
+.star-rating label:before {
+  content: "\2605";
+  font-size: 30px;
+  color: #ddd;
+}
+
+.star-rating input:checked ~ label:before,
+.star-rating input:checked ~ label ~ label:before {
+  color: orange;
+}
