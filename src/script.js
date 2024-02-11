@@ -6,13 +6,13 @@ const SEARCH_API =
 
 const main = document.getElementById("main");
 const search = document.getElementById("search");
+const form = document.getElementById("form")
 
 async function fetchMovies(url) {
   const res = await fetch(url);
   const data = await res.json();
   const { results } = data;
 
-  console.log(results);
   showMovies(results);
 }
 
@@ -31,12 +31,41 @@ function showMovies(movies) {
     <img src="${imgPath}" alt="${title}" >
     <div class="movie_info">
        <h3>${title}</h3>
-       <span class="${vote_average}">${vote_average}</span>
+       <span class="vote ${classRate(vote_average)}">${vote_average.toFixed(1)}</span>
+       <p>Release Date : ${release_date}</p>
     </div>
     <div class="overview">
        ${overview}
     </div>
     `
     main.appendChild(movieEl)
+
+    movieEl.addEventListener("click", ()=> {
+      console.log(movie)
+      localStorage.setItem("movie", JSON.stringify(movie))
+
+      var url = "description.html";
+        
+      // Open the new window with specified URL
+      window.open(url);
+    })
   });
+
+}
+
+form.addEventListener("submit", (e) => {
+e.preventDefault();
+
+fetchMovies(SEARCH_API + search.value)
+search.value = ''
+})
+
+function classRate(vote){
+if(vote >=7){
+    return "green"
+}else if(vote >=5){
+    return "orange"
+}else{
+    return "red"
+}
 }
