@@ -7,8 +7,23 @@ const IMG_PATH = "https://image.tmdb.org/t/p/w1280";
 
 document.title = parsedMovie.title;
 
-console.log(parsedMovie)
-const {title,vote_average, overview, release_date, poster_path, original_language, vote_count,adult} = parsedMovie
+const {title,vote_average, overview, release_date, poster_path, original_language, vote_count,adult} = parsedMovie;
+
+const seatCount = [1,2,3,4,5,6,7,8,9,10,11,12]
+const seats = [
+  { row: 'A', seat: seatCount },
+  { row: 'B', seat: seatCount },
+  { row: 'C', seat: seatCount },
+  { row: 'D', seat: seatCount },
+  { row: 'E', seat: seatCount },
+  { row: 'F', seat: seatCount },
+  { row: 'G', seat: seatCount },
+  { row: 'H', seat: seatCount },
+  { row: 'I', seat: seatCount },
+  { row: 'J', seat: seatCount },
+  { row: 'K', seat: seatCount },
+  { row: 'L', seat: seatCount },
+]
 
 main.innerHTML=`
 <div class="container">
@@ -59,4 +74,40 @@ main.innerHTML=`
     </div>
   </div>
 </div>
+<div class="seats">
+<table>
+<tr class="seat">
+    <td></td>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+    <td>4</td>
+    <td>5</td>
+    <td>6</td>
+    <td>7</td>
+    <td>8</td>
+    <td>9</td>
+    <td>10</td>
+    <td>11</td>
+    <td>12</td>
+</tr>
+${seats.map((seat)=> {
+  return `
+  <tr>
+    <td class="row">${seat.row}</td>
+    ${seat.seat.map((item)=> {
+      return `<td><input type="checkbox" class="seats ${vipSeats(seat.row)}" value=${seat.row + item}></td>`
+    } )}
+  </tr>
+  `
+})}
+</table>
+</div>
 `
+
+function vipSeats(row){
+  if(row === "A" | "B"| "C"){
+    console.log(row)
+    return "vip"
+  }
+}
