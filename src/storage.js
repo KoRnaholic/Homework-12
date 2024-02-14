@@ -75,6 +75,9 @@ main.innerHTML=`
   </div>
 </div>
 <div class="seats">
+<div class="screen">
+<img src="/src/images/screen.avif" width=900px height=199px />
+</div>
 <table>
 <tr class="seat">
     <td></td>
@@ -96,7 +99,7 @@ ${seats.map((seat)=> {
   <tr>
     <td class="row">${seat.row}</td>
     ${seat.seat.map((item)=> {
-      return `<td><input type="checkbox" class="seats ${vipSeats(seat.row)}" value=${seat.row + item}></td>`
+      return `<td><input type="checkbox" class="seats ${item <= 3 ? "vip" : ""}" value=${seat.row + item}></td>`
     } )}
   </tr>
   `
@@ -104,10 +107,3 @@ ${seats.map((seat)=> {
 </table>
 </div>
 `
-
-function vipSeats(row){
-  if(row === "A" | "B"| "C"){
-    console.log(row)
-    return "vip"
-  }
-}
