@@ -25,6 +25,8 @@ const seats = [
   { row: 'L', seat: seatCount },
 ]
 
+// let price = 0;
+
 main.innerHTML=`
 <div class="container">
   <div class="card">
@@ -99,11 +101,32 @@ ${seats.map((seat)=> {
   <tr>
     <td class="row">${seat.row}</td>
     ${seat.seat.map((item)=> {
-      return `<td><input type="checkbox" class="seats ${item <= 3 ? "vip" : ""}" value=${seat.row + item}></td>`
+      return `<td><input type="checkbox" class="seats chair"  value=${seat.row + item}></td>`
     } )}
   </tr>
   `
 })}
 </table>
+<div class="price-info">
+<p class="price">Total Price: <span id="count">0$</span></p>
+<p class="checked-seats">Checked Seats Are: <span id="values"></span></p>
+</div>
 </div>
 `
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const checkboxes = document.querySelectorAll('.seats');
+
+  function updateCount() {
+      const checkedCheckboxes = [...checkboxes].filter(checkbox => checkbox.checked);
+      const checkedCount = checkedCheckboxes.length;
+      const checkedValues = checkedCheckboxes.map(checkbox => checkbox.value).join(', ');
+      document.getElementById('count').textContent = checkedCount * 16.99;
+      document.getElementById('values').textContent = checkedValues;
+  }
+
+  checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', updateCount);
+  });
+});

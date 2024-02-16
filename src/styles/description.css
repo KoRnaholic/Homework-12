@@ -200,3 +200,21 @@ padding-top: 30px;
 /* .vip:after{
   background-color: yellow;
 } */
+
+.price-info{
+  display: flex;
+  gap: 20px;
+  position: absolute;
+}
+
+.price{
+  color: white;
+
+  font-size: 24px;
+}
+
+.checked-seats{
+  color: white;
+ 
+  font-size: 24px;
+}
