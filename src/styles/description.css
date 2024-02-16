@@ -167,7 +167,6 @@ input[type=checkbox]:before {
   display: inline-block;
   vertical-align:middle;
   text-align: center;
-  box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
   background-color:#ccc;
   border-radius: 10px;
 }
@@ -176,6 +175,31 @@ input[type=checkbox]:checked:before {
   background-color:orange;
   font-size: 15px;
 }
+
+input[type=checkbox].vip-row:checked:before {
+  background-color: orange; 
+}
+
+input[type=checkbox].vip-row:before {
+  background-color: #98ABEE;
+}
+
+.example{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.example span{
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+}
+.vip{
+  margin-top: 40px;
+}
+
 
 .seat td{
   color: white;
@@ -197,7 +221,7 @@ padding-top: 20px;
 .price-info{
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 50px;
   flex-wrap: nowrap;
   margin-left: 100px;
 }

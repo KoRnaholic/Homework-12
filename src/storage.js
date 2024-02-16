@@ -96,18 +96,23 @@ main.innerHTML=`
     <td>11</td>
     <td>12</td>
 </tr>
-${seats.map((seat)=> {
+${seats.map((seat, rowIndex)=> {
   return `
   <tr>
     <td class="row">${seat.row}</td>
     ${seat.seat.map((item)=> {
-      return `<td><input type="checkbox" class="seats chair"  value=${seat.row + item}></td>`
+      const isVipRow = rowIndex < 3 ? 'vip-row' : '';
+      return `<td><input type="checkbox" class="seats chair ${isVipRow}"  value=${seat.row + item}></td>`
     } ).join('')}
   </tr>
   `
 }).join('')}
 </table>
 <div class="price-info">
+<div class="example">
+<span><input type="checkbox" class=" chair vip-row"><span class="vip">VIP</span></span>
+<span><input type="checkbox" class=" chair"><span class="vip">Regular</span></span>
+</div>
 <p class="checked-seats">Selected Seats Are: <span id="values"></span></p>
 <p class="price">Total Price: <span id="count">0</span></p>
 <a href="#" class="button">Buy Ticket</a>
