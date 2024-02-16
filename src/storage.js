@@ -76,10 +76,10 @@ main.innerHTML=`
     </div>
   </div>
 </div>
-<div class="seats">
 <div class="screen">
 <img src="/src/images/screen.avif" width=900px height=199px />
 </div>
+<div class="chairs">
 <table>
 <tr class="seat">
     <td></td>
@@ -102,14 +102,15 @@ ${seats.map((seat)=> {
     <td class="row">${seat.row}</td>
     ${seat.seat.map((item)=> {
       return `<td><input type="checkbox" class="seats chair"  value=${seat.row + item}></td>`
-    } )}
+    } ).join('')}
   </tr>
   `
-})}
+}).join('')}
 </table>
 <div class="price-info">
-<p class="price">Total Price: <span id="count">0$</span></p>
-<p class="checked-seats">Checked Seats Are: <span id="values"></span></p>
+<p class="checked-seats">Selected Seats Are: <span id="values"></span></p>
+<p class="price">Total Price: <span id="count">0</span></p>
+<a href="#" class="button">Buy Ticket</a>
 </div>
 </div>
 `
@@ -122,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const checkedCheckboxes = [...checkboxes].filter(checkbox => checkbox.checked);
       const checkedCount = checkedCheckboxes.length;
       const checkedValues = checkedCheckboxes.map(checkbox => checkbox.value).join(', ');
-      document.getElementById('count').textContent = checkedCount * 16.99;
+      document.getElementById('count').textContent = (checkedCount * 16.99).toFixed(2) + "$";
       document.getElementById('values').textContent = checkedValues;
   }
 
